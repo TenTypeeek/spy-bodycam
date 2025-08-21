@@ -26,32 +26,39 @@ Make sure to have the following dependencies installed:
 4. Setup the config as per your framework.
 5. Add the item images in installfiles folder to your inventory.
 
-![Bodycam Image](https://i.imgur.com/CuSyeZT.png)
-![Dashcam Image](https://i.imgur.com/TVx1mcn.png)
+![Bodycam Image](https://i.imgur.com/fmRJJyi.png)
+![Dashcam Image](https://i.imgur.com/NEwYdNq.png)
 
 6. Add the items
 
 ### QBCore
 ```lua
-['bodycam'] = {['name'] = 'bodycam', ['label'] = 'Bodycam', ['weight'] = 500, ['type'] = 'item', ['image'] = 'bodycam.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Bodycam for authorized personnel only'},
-['dashcam'] = {['name'] = 'dashcam', ['label'] = 'Dashcam', ['weight'] = 500, ['type'] = 'item', ['image'] = 'dashcam.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Dashcam for authorized vehicle only'},
+['bodycam'] = {['name'] = 'bodycam', ['label'] = 'Axon Body 4', ['weight'] = 500, ['type'] = 'item', ['image'] = 'bodycam.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Bodycam for authorized personnel only'},
+['dashcam'] = {['name'] = 'dashcam', ['label'] = 'Nextbase 622GW', ['weight'] = 500, ['type'] = 'item', ['image'] = 'dashcam.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Dashcam for authorized vehicle only'},
 ```
 ### OX
 ```lua
     ["bodycam"] = {
-        label = "bodycam", weight = 0, stack = false, close = true, description = "Bodycam",
-        client = { image = "bodycam.png", event = "spy-bodycam:bodycamstatus" }
+        label = "Axon Body 4",
+        weight = 150,
+        stack = false,
+        close = true,
+        client = {
+            event = "spy-bodycam:bodycamstatus" 
+        }
     },
+
     ["dashcam"] = {
-        label = "dashcam", weight = 0, stack = false, close = true, description = "dashcam",
-        client = { image = "dashcam.png", event = "spy-bodycam:toggleCarCam" }
+        label = "Nextbase 622GW", 
+        weight = 125, 
+        stack = false, 
+        close = true, 
+        client = {
+            event = "spy-bodycam:toggleCarCam"
+        }
     },
 ```
-### ESX
-```lua
-INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES ('bodycam', 'Bodycam', 1, 0, 1);
-INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES ('dashcam', 'Dashcam', 1, 0, 1);
-```
+
 7. Run the sql file in installfiles folder
 ```sql
 CREATE TABLE IF NOT EXISTS `spy_bodycam` (
