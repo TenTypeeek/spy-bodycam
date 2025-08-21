@@ -7,7 +7,7 @@
 
 Config = Config or {}
 
-Config.Framework = 'qb' -- qb | esx 
+Config.Framework = 'esx' -- qb | esx 
 
 if Config.Framework == 'qb' then    -- Dont touch this part
     QBCore = exports["qb-core"]:GetCoreObject()
@@ -16,12 +16,12 @@ elseif Config.Framework == 'esx' then
 end
 
 Config.Dependency = {                   
-    UseTarget = 'qb',                   -- qb | ox
-    UseInventory = 'qb',                -- qb | ox | esx             
-    UseProgress = 'qb',                 -- qb | ox | esx                  
-    UseMenu = 'qb',                     -- qb | ox | esx 
-    UseNotify = 'qb',                   -- qb | ox | esx
-    UseAppearance = 'qb',               -- qb | illenium | false 
+    UseTarget = 'ox',                   -- qb | ox
+    UseInventory = 'ox',                -- qb | ox | esx             
+    UseProgress = 'ox',                 -- qb | ox | esx                  
+    UseMenu = 'ox',                     -- qb | ox | esx 
+    UseNotify = 'ox',                   -- qb | ox | esx
+    UseAppearance = 'false',               -- qb | illenium | false 
 }
 
 Config.ExitCamKey = 'BACK' 
@@ -49,6 +49,7 @@ Config.PropLoc = {  -- Change prop position according to ur clothing pack.
 
 Config.AllowedJobs = { -- Only these jobs can use bodycam/dashcam item.
     'police',
+    'sheriff',
     'ambulance',
 }
 
@@ -59,21 +60,30 @@ Config.WatchLoc = {
         coords = vector3(440.149445, -979.437378, 30.453491), 
         rad = 1.5, 
         debug = false,
-        jobCam = {'police','ambulance'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
+        jobCam = { 'police' },  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
         carCam = {                        -- false = able to view all the dashcams
             job = {'police'},             -- Jobs that activate dashcams shown in the list | false excludes.
             class = {18}                  -- Dashcam activated on these vehicleclass shown in the list | false excludes.
         },
         targetAuth = {'police'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
-
-    },  -- You can add more locations 
+    },
+    [2] = {
+        coords = vector3(1840.62, 3681.55, 34.12), 
+        rad = 2.5, 
+        debug = false,
+        jobCam = { 'sheriff' },  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
+        carCam = {                        -- false = able to view all the dashcams
+            job = {'sheriff'},             -- Jobs that activate dashcams shown in the list | false excludes.
+            class = {false}                  -- Dashcam activated on these vehicleclass shown in the list | false excludes.
+        },
+        targetAuth = {'sheriff'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
+    },
 }
 
 Config.DebugCamera = false -- Make it true if you want to get new camera offset for some vehicle.
 Config.VehCamOffset = {
     [`police2`] = {0.000000, 0.330000, 0.530000},
-    -- [`18chgr2`] = {0.000000, 0.510000, 0.630000},  -- Example vehicle. The script comes with its own offset finder just set DebugCamera to true and get the offset.
-    -- [`vehiclespawncode`] = {0.000000, 0.510000, 0.630000},
+    [`polscout2`] = {0.000000, 0.600000, 1.200000},
 }
 
 -- Vehicle Classes:  
